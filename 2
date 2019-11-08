@@ -19,7 +19,7 @@ int main() {
 		i = 0;
 		for (i; i < (v.size()-1); i++) {
 			if (v[i] == v[i + 1]) {
-				for (j = i; ((v[j] == v[j + 1]) && (j < (v.size()-1))); j++)
+				for (j = i; (v[j] == v[j + 1]) && (j < (v.size()-1)); j++)
 					s++;
 				if (s > l) {
 					v.erase(v.begin() + i, v.begin() + (j+1));
