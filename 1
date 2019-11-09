@@ -15,13 +15,13 @@ int main() {
 			v.push_back(a);
 		}
 		i = 0;
-		for (i; i < n - 1; i++)
+		for (i; i < v.size() - 1; i++)
 			if (v[i] != v[i + 1]) {
 				b.push_back(1);
 				c.push_back(v[i]);
 			}
 			else {
-				for (j = i; (v[j] == v[j + 1]) && (j < n - 1); j++)
+				for (j = i; (v[j] == v[j + 1]) && (j < v.size() - 1); j++)
 					s++;
 				b.push_back(s);
 				c.push_back(v[i]);
