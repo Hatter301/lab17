@@ -6,11 +6,11 @@ int main() {
 	vector <int> v;
 	cout << "Введите K" << endl;
 	cin >> k;
-	if (k <= 0)
+	cout << "Введите N" << endl;
+		cin >> n;
+	if ((k <= 0)||(n<=0))
 		cout << "Данные введены некорректно";
 	else {
-		cout << "Введите N" << endl;
-		cin >> n;
 		cout << "Введите элементы массива" << endl;
 		for (i = 0; i < n; i++) {
 			cin >> a;
