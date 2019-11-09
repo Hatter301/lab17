@@ -1,0 +1,31 @@
+#include <iostream>
+#include <vector>
+#include <cmath>
+using namespace std;
+int main() {
+	int n, a, i, j=1,max,d,I,J;
+	vector <int> v;
+	cin >> n;
+	if  (n <= 0)
+		cout << "Данные введены некорректно";
+	else {
+		max = -1 * INT_MAX;
+		for (i = 0; i < 2 * n; i++) {
+			cin >> a;
+			v.push_back(a);
+		}
+		for (i = 0; i < v.size() - 1; i++) {
+			d = sqrt(pow(v[i], 2) + pow(v[j], 2));
+			if ((d > max) && (v[i] < 0) && (v[j] > 0)) {
+				max = d;
+				I = i;
+				J = j;
+			}
+			j++;
+		}
+		if (max == (-1 * INT_MAX))
+			cout << 0 << " " << 0;
+		else cout << v[I] << " " << v[J];
+	}
+	return 0;
+}
