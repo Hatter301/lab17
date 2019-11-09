@@ -2,7 +2,7 @@
 #include <vector>
 using namespace std;
 int main() {
-	int n, k, a, i = 0, j, s = 0, x,l1=1,l2=1,h=1;
+	int n, k, a, i = 0, j=-1, s = 0, x,l1=1,l2=1,h=1,g;
 	vector <int> v;
 	cout << "Введите K" << endl;
 	cin >> k;
@@ -22,19 +22,55 @@ int main() {
 				s++;
 			else {
 				for (j=i;(v[j] == v[j + 1]) && (j < v.size() - 1);j++)
+				s++;
+					i = j;
+			}
+		}
+		if (v[n-1]!=v[n-2])
+		s++;
+		if (k>s)
+		cout << "Данные введены некорректно";
+		else if (s==k)
+		for (i = 0; i < v.size(); i++)
+			cout << v[i] << " ";
+			else {
+			    s=0;
+			i=0;
+		for (i; i < v.size() - 1; i++) {
+			if (v[i] != v[i + 1])
+				s++;
+			else {
+				for (j=i;(v[j] == v[j + 1]) && (j < v.size() - 1);j++)
 					l1++;
 				s++;
 				if (s != k)
 					i = j;
 			}
 			if (s == k) {
-				for(x = v.size() - 1;(v[x] == v[x - 1]);x-=1) {
-					v.insert(v.begin() + j + 1, v[x]);
+				if (l1==1) {
+				    for(x = v.size() - 1;(v[x] == v[x - 1]);x-=1) {
+					v.insert(v.begin() + i + 1, v[x]);
 					x++;
 					l2++;
 				}
 				x = v.size() - 1;
-				v.insert(v.begin() + j + 1, v[x]);
+				v.insert(v.begin() + i+1, v[x]);
+				x = v.size() - 1;
+				for(x;h<l2;x-=1)
+					h++;
+				v.erase(v.begin() + x, v.begin() + v.size());
+					v.push_back(v[i]);
+						v.erase(v.begin()+i);
+				i=v.size();
+				}
+				else {
+				    for(x = v.size() - 1;(v[x] == v[x - 1]);x-=1) {
+					v.insert(v.begin() + j + 1, v[x]);
+					x++;
+					l2++;
+				}
+				    	x = v.size() - 1;
+				v.insert(v.begin() + j+1, v[x]);
 				x = v.size() - 1;
 				for(x;h<l2;x-=1)
 					h++;
@@ -44,13 +80,15 @@ int main() {
 					v.push_back(v[x]);
 					x++;
 				}
-				v.erase(v.begin() + i, v.begin() + j + 1);
+				v.erase(v.begin() + i, v.begin() + j+1);
 				i=v.size();
+				}
 			}
 			l1=1;
 		}
 		for (i = 0; i < v.size(); i++)
 			cout << v[i] << " ";
+	}
 	}
 	return 0;
 }
