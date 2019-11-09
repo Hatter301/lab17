@@ -1,0 +1,49 @@
+#include <iostream>
+#include <vector>
+using namespace std;
+int main() {
+	int n, k, a, i = 0, j, s = 0, x;
+	vector <int> v;
+	cout << "Введите K" << endl;
+	cin >> k;
+	if (k <= 0)
+		cout << "Данные введены некорректно";
+	else {
+		cout << "Введите N" << endl;
+		cin >> n;
+		cout << "Введите элементы массива" << endl;
+		for (i = 0; i < n; i++) {
+			cin >> a;
+			v.push_back(a);
+		}
+		i = 0;
+		for (i; i < v.size() - 1; i++) {
+			if (v[i] != v[i + 1])
+				s++;
+			else {
+				j = i;
+				while ((v[j] == v[j + 1]) && (j < v.size() - 1))
+					j++;
+				s++;
+				if (s != k)
+					i = j;
+			}
+			if (s == k) {
+				x = v.size() - 1;
+				while (v[x] == v[x - 1])
+					x -= 1;
+				v.insert(v.begin() + j + 1, v.begin() + x, v.begin() + v.size() - 1);
+				v.erase(v.begin() + x, v.begin() + v.size());
+				x = i;
+				while (x <= j) {
+					v.push_back(v[x]);
+					x++;
+				}
+				v.erase(v.begin() + i, v.begin() + j + 1);
+			}
+		}
+		for (i = 0; i < v.size(); i++)
+			cout << v[i] << " ";
+	}
+	return 0;
+}
